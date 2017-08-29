@@ -184,6 +184,10 @@ PRODUCT_PACKAGES += \
     libtinyxml \
     libxml2
 
+# Keylayout
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/synaptics-rmi-ts.kl:system/usr/keylayout/synaptics-rmi-ts.kl
+
 # NFC
 PRODUCT_PACKAGES += \
     com.android.nfc_extras \
