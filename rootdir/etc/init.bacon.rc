@@ -261,8 +261,17 @@ service charger /system/bin/charger
     capabilities SYS_BOOT
     critical
 
+service chargerled /system/vendor/bin/init.chargerled.sh
+    class late_start
+    user root
+    group root system
+    disabled
+    oneshot
+
 on charger
     write /sys/class/leds/lcd-backlight/brightness 100
+
+	start chargerled
 
 service qcamerasvr /system/vendor/bin/mm-qcamera-daemon
     class late_start

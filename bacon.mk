@@ -94,6 +94,9 @@ WITH_LINEAGE_CHARGER := false
 PRODUCT_PACKAGES += \
     charger_res_images
 
+PRODUCT_PACKAGES += \
+    init.chargerled.sh
+
 # Data
 PRODUCT_PACKAGES += \
     librmnetctl
