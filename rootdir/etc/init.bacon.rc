@@ -19,6 +19,8 @@ import /vendor/etc/init/hw/init.qcom.power.rc
 
 on init
     export LD_PRELOAD /system/lib/libboringssl-compat.so
+    start program_bdaddr
+    
 
 on early-init
     mount debugfs debugfs /sys/kernel/debug
@@ -305,3 +307,10 @@ service wcnss-service /vendor/bin/wcnss_service
 
 on property:apexd.status=ready
     mount none /system/etc/swcodec/ld.config.txt /apex/com.android.media.swcodec/etc/ld.config.txt bind
+
+service program_bdaddr /vendor/bin/init.program_bdaddr.sh
+    user bluetooth
+    group bluetooth
+    seclabel u:r:bluetooth_loader:s0
+    disabled
+    oneshot

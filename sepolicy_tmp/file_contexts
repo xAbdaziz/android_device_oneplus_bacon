@@ -1,2 +1,4 @@
 /firmware(/.*)?        u:object_r:firmware_file:s0
 /persist(/.*)?         u:object_r:persist_file:s0
+/(vendor|system/vendor)/bin/init\.program_bdaddr\.sh    u:object_r:bluetooth_loader_exec:s0
+/(vendor|system/vendor)/bin/awk                         u:object_r:awktool_exec:s0

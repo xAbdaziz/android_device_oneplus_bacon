@@ -264,7 +264,8 @@ PRODUCT_PACKAGES += \
     ueventd.bacon.rc \
 
 PRODUCT_PACKAGES += \
-    init.qcom.bt.sh
+    init.qcom.bt.sh \
+    init.program_bdaddr.sh 
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/etc/fstab.bacon:$(TARGET_COPY_OUT_RAMDISK)/fstab.bacon
