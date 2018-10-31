@@ -304,6 +304,9 @@ TARGET_LD_SHIM_LIBS := \
 PRODUCT_PACKAGES += \
     OneplusShit
 
+PRODUCT_PACKAGES += qti-telephony-common
+PRODUCT_BOOT_JARS += telephony-ext
+
 # Call the proprietary setup
 $(call inherit-product, vendor/oneplus/bacon/bacon-vendor.mk)
 
