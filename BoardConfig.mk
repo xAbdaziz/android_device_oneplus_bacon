@@ -83,7 +83,9 @@ BUILD_BROKEN_DUP_RULES := true
 # Camera
 TARGET_USES_MEDIA_EXTENSIONS := true
 TARGET_PROCESS_SDK_VERSION_OVERRIDE := \
-    /system/vendor/bin/mm-qcamera-daemon=23
+    /system/vendor/bin/mm-qcamera-daemon=23 \
+    /system/vendor/bin/cameraserver=23 \
+    /system/vendor/bin/mediaserver=23
 
 # Charger
 BOARD_CHARGER_DISABLE_INIT_BLANK := true
