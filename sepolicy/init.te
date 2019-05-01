@@ -53,6 +53,7 @@ allow init vendor_file:file execute_no_trans;
 allow init video_device:chr_file { ioctl write };
 allow init wcnss_device:chr_file write;
 allow init { domain -lmkd -crash_dump }:process noatsecure;
+allow init system_file:file {execute_no_trans};
 allowxperm init self:socket ioctl { 0x0000c302 0x0000c304 };
 allowxperm init self:udp_socket ioctl { 0x00008916 0x00008922 0x000089fb 0x00008939 };
 allowxperm init self:udp_socket ioctl { 0x000089f4 0x000089f8 0x000089f9 0x00008946 };

@@ -9,6 +9,7 @@ allow system_server sensors_socket:sock_file write;
 allow system_server socket_device:sock_file write;
 allow system_server init:binder { call };
 allow system_server unlabeled:file { unlink };
+allow system_server default_android_service:service_manager { add };
 dontaudit system_server dalvikcache_data_file:file { execute write };
 qmux_socket(system_server)
 r_dir_file(system_server, sysfs_usb_supply);
