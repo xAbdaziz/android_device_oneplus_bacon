@@ -32,7 +32,6 @@ import com.oneplus.shit.settings.KernelControl;
 import com.oneplus.shit.settings.ScreenOffGesture;
 import com.oneplus.shit.settings.DCIModeSwitch;
 import com.oneplus.shit.settings.DisplayCalibration;
-import com.oneplus.shit.settings.HBMModeSwitch;
 import com.oneplus.shit.settings.SRGBModeSwitch;
 import com.oneplus.shit.settings.ShitPanelSettings;
 import com.oneplus.shit.settings.VibratorStrengthPreference ;
@@ -74,15 +73,6 @@ public class Startup extends BroadcastReceiver {
                         screenOffGestureSharedPreferences.getBoolean(
                         ScreenOffGesture.PREF_GESTURE_ENABLE, true));
          }
-
-        boolean enabled = sharedPrefs.getBoolean(ShitPanelSettings.KEY_SRGB_SWITCH, false);
-        restore(SRGBModeSwitch.getFile(), enabled);
-        enabled = sharedPrefs.getBoolean(ShitPanelSettings.KEY_HBM_SWITCH, false);
-        restore(HBMModeSwitch.getFile(), enabled);
-        enabled = sharedPrefs.getBoolean(ShitPanelSettings.KEY_DCI_SWITCH, false);
-        restore(DCIModeSwitch.getFile(), enabled);
-        enabled = sharedPrefs.getBoolean(ShitPanelSettings.KEY_ONEPLUS_SWITCH, false);
-        restore(OnePlusModeSwitch.getFile(), enabled);
         VibratorStrengthPreference.restore(context);
         DisplayCalibration.restore(context);
         new DiracUtils(context).onBootCompleted();

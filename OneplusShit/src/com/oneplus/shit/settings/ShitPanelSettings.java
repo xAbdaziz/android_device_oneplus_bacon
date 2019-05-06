@@ -53,7 +53,6 @@ public class ShitPanelSettings extends PreferenceActivity implements
     /*public static final String KEY_TAPTOWAKE_SWITCH = "taptowake";*/
 
     public static final String KEY_SRGB_SWITCH = "srgb";
-    public static final String KEY_HBM_SWITCH = "hbm";
     public static final String KEY_DCI_SWITCH = "dci";
     public static final String KEY_NIGHT_SWITCH = "night";
     public static final String KEY_ONEPLUS_SWITCH = "oneplus";
@@ -61,7 +60,6 @@ public class ShitPanelSettings extends PreferenceActivity implements
     private static final String SPECTRUM_SYSTEM_PROPERTY = "persist.spectrum.profile";
 
     private VibratorStrengthPreference mVibratorStrength;
-    private TwoStatePreference mHBMModeSwitch;
     private ListPreference mSpectrum;
 
     @Override
@@ -76,9 +74,6 @@ public class ShitPanelSettings extends PreferenceActivity implements
 
         /*mTapToWakeSwitch = (TwoStatePreference) findPreference(KEY_TAPTOWAKE_SWITCH);
         mTapToWakeSwitch.setOnPreferenceChangeListener(new TapToWakeSwitch());*/
-
-        mHBMModeSwitch = (TwoStatePreference) findPreference(KEY_HBM_SWITCH);
-        mHBMModeSwitch.setOnPreferenceChangeListener(new HBMModeSwitch());
 
         mSpectrum = (ListPreference) findPreference(SPECTRUM_KEY);
         if( mSpectrum != null ) {

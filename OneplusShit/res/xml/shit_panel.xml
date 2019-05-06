@@ -17,26 +17,6 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
     <Preference
-        android:key="slider"
-        android:title="@string/slider_op_title"
-        android:summary="@string/slider_op_summary"
-        android:persistent="false" >
-        <intent android:action="android.intent.action.MAIN"
-                android:targetPackage="com.oneplus.shit.settings"
-                android:targetClass="com.oneplus.shit.settings.ButtonSettingsActivity" />
-    </Preference>
-
-    <Preference
-        android:key="dirac_settings"
-        android:title="@string/dirac_settings_title"
-        android:summary="@string/dirac_settings_summary"
-        android:persistent="false" >
-        <intent android:action="android.intent.action.MAIN"
-                android:targetPackage="com.oneplus.shit.settings"
-                android:targetClass="com.oneplus.shit.settings.dirac.DiracActivity" />
-    </Preference>
-
-    <Preference
         android:key="gestures"
         android:title="@string/enable_gestures_title"
         android:summary="@string/enable_gestures_summary"
@@ -51,7 +31,8 @@
         android:summary="@string/taptowake_summary"
         android:title="@string/taptowake_title"
         android:defaultValue="true" />-->
-
+    <PreferenceCategory
+        android:title="Misc">
     <ListPreference
         android:key="spectrum"
         android:title="@string/spectrum_title"
@@ -61,17 +42,12 @@
         android:entryValues="@array/spectrum_values"
         android:dialogTitle="@string/spectrum_title" />
 
-    <PreferenceCategory
-        android:title="@string/category_vibrator">
         <com.oneplus.shit.settings.VibratorStrengthPreference
             android:key="vib_strength"
             android:iconSpaceReserved="false"
             android:title="@string/vib_strength_title_head"
             android:summary="@string/vib_strength_summary_head" />
-    </PreferenceCategory>
 
-    <PreferenceCategory
-        android:title="@string/graphics_title">
         <Preference
             android:key="kcal"
             android:title="@string/kcal_title"
@@ -81,22 +57,6 @@
                     android:targetPackage="com.oneplus.shit.settings"
                     android:targetClass="com.oneplus.shit.settings.DisplayCalibration" />
         </Preference>
-
-        <Preference
-            android:key="panel_category"
-            android:title="@string/panel_category_title"
-            android:summary="@string/panel_category_summary"
-            android:persistent="false" >
-            <intent android:action="android.intent.action.MAIN"
-                    android:targetPackage="com.oneplus.shit.settings"
-                    android:targetClass="com.oneplus.shit.settings.PanelSettingsActivity" />
-        </Preference>
-
-        <SwitchPreference
-            android:key="hbm"
-            android:summary="@string/hbm_mode_summary"
-            android:title="@string/hbm_mode_title"
-            android:defaultValue="false" />
 
     </PreferenceCategory>
 </PreferenceScreen>
