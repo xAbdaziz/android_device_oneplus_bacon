@@ -33,14 +33,6 @@
         android:defaultValue="true" />-->
     <PreferenceCategory
         android:title="Misc">
-    <ListPreference
-        android:key="spectrum"
-        android:title="@string/spectrum_title"
-        android:summary="@string/spectrum_summary"
-        android:defaultValue="0"
-        android:entries="@array/spectrum_profiles"
-        android:entryValues="@array/spectrum_values"
-        android:dialogTitle="@string/spectrum_title" />
 
         <com.oneplus.shit.settings.VibratorStrengthPreference
             android:key="vib_strength"
