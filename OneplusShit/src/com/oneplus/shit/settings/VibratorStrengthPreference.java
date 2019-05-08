@@ -26,14 +26,13 @@ import android.preference.SeekBarDialogPreference;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.SeekBar;
-import android.widget.TextView;
+import android.widget.Button;
 import android.os.Bundle;
 import android.util.Log;
 import android.os.Vibrator;
+
 import com.oneplus.shit.settings.utils.FileUtils;
 import com.oneplus.shit.settings.R;
-
-import java.util.List;
 
 public class VibratorStrengthPreference extends SeekBarDialogPreference implements
         SeekBar.OnSeekBarChangeListener {
@@ -42,21 +41,17 @@ public class VibratorStrengthPreference extends SeekBarDialogPreference implemen
     private int mOldStrength;
     private int mMinValue;
     private int mMaxValue;
-    private float offset;
     private Vibrator mVibrator;
-    private TextView mValueText;
 
     private static final String FILE_LEVEL = "/sys/devices/virtual/timed_output/vibrator/vtg_level";
+    private static final String FILE_MIN = "/sys/devices/virtual/timed_output/vibrator/vtg_min";
+    private static final String FILE_MAX = "/sys/devices/virtual/timed_output/vibrator/vtg_max";
     private static final long testVibrationPattern[] = {0,250};
 
     public VibratorStrengthPreference(Context context, AttributeSet attrs) {
         super(context, attrs);
-        // from drivers/platform/msm/qpnp-haptic.c
-        // #define QPNP_HAP_VMAX_MIN_MV		116
-        // #define QPNP_HAP_VMAX_MAX_MV		3596
-        mMinValue = 116;
-        mMaxValue = 3596;
-        offset = mMaxValue / 100f;
+        mMinValue = Integer.valueOf(FileUtils.getFileValue(FILE_MIN, "12"));
+        mMaxValue = Integer.valueOf(FileUtils.getFileValue(FILE_MAX, "31"));
 
         mVibrator = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
         setDialogLayoutResource(R.layout.preference_dialog_vibrator_strength);
@@ -75,8 +70,6 @@ public class VibratorStrengthPreference extends SeekBarDialogPreference implemen
         mSeekBar = getSeekBar(view);
         mSeekBar.setMax(mMaxValue - mMinValue);
         mSeekBar.setProgress(mOldStrength - mMinValue);
-        mValueText = (TextView) view.findViewById(R.id.current_value);
-        mValueText.setText(Integer.toString(Math.round(mOldStrength / offset)) + "%");
         mSeekBar.setOnSeekBarChangeListener(this);
     }
 
@@ -84,27 +77,26 @@ public class VibratorStrengthPreference extends SeekBarDialogPreference implemen
         return FileUtils.fileWritable(FILE_LEVEL);
     }
 
-    public static String getValue(Context context) {
-        return FileUtils.getFileValue(FILE_LEVEL, "2700");
-    }
+	public static String getValue(Context context) {
+		return FileUtils.getFileValue(FILE_LEVEL, "31");
+	}
 
-    private void setValue(String newValue) {
-        FileUtils.writeValue(FILE_LEVEL, newValue);
-    }
+	private void setValue(String newValue) {
+	    FileUtils.writeValue(FILE_LEVEL, newValue);
+	}
 
     public static void restore(Context context) {
         if (!isSupported()) {
             return;
         }
 
-        String storedValue = PreferenceManager.getDefaultSharedPreferences(context).getString(ShitPanelSettings.KEY_VIBSTRENGTH, "2700"); 
+        String storedValue = PreferenceManager.getDefaultSharedPreferences(context).getString(ShitPanelSettings.KEY_VIBSTRENGTH, "31"); 
         FileUtils.writeValue(FILE_LEVEL, storedValue);
     }
 
     public void onProgressChanged(SeekBar seekBar, int progress,
             boolean fromTouch) {
         setValue(String.valueOf(progress + mMinValue));
-        mValueText.setText(Integer.toString(Math.round((progress + mMinValue) / offset)) + "%");
     }
 
     public void onStartTrackingTouch(SeekBar seekBar) {
@@ -136,4 +128,3 @@ public class VibratorStrengthPreference extends SeekBarDialogPreference implemen
         setValue(String.valueOf(mOldStrength));
     }
 }
-
