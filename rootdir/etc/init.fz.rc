@@ -32,5 +32,5 @@ on property:sys.boot_completed=1
 
     # I/O
     write /sys/block/mmcblk0/queue/iostats 0
-    write /sys/block/mmcblk0/queue/scheduler "maple"
+    write /sys/block/mmcblk0/queue/scheduler "deadline"
     write /sys/block/mmcblk0/queue/read_ahead_kb 2048
