@@ -22,6 +22,9 @@ on fs
     # Start HW service manager early
     start hwservicemanager
 
+on init
+    export LD_PRELOAD /system/lib/libboringssl-compat.so
+
 on late-fs
     # Start services for Boot Animation
     start hwservicemanager
@@ -39,3 +42,4 @@ on post-fs-data
     # Torch
     chown system camera /sys/class/leds/torch-light/brightness
     chmod 0660 /sys/class/leds/torch-light/brightness
+    
