@@ -1,7 +1,3 @@
-on early-init
-    write /sys/block/mmcblk0/queue/read_ahead_kb 2048
-    setprop sys.io.scheduler "bfq"
-
 on stock_profile
 
     # cpufreq settings   
@@ -11,47 +7,45 @@ on stock_profile
     chmod 0664 /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
     chown system.system /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
     chmod 0664 /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
-    chown system.system /sys/devices/system/cpu/cpu0/online
-    chmod 0664 /sys/devices/system/cpu/cpu0/online
-    chown system.system /sys/devices/system/cpu/cpu1/online  
-    chmod 0664 /sys/devices/system/cpu/cpu1/online
-    chown system.system /sys/devices/system/cpu/cpu2/online  
-    chmod 0664 /sys/devices/system/cpu/cpu2/online
-    chown system.system /sys/devices/system/cpu/cpu3/online  
-    chmod 0664 /sys/devices/system/cpu/cpu3/online
 
+    stop mpdecision
 
     # CPU0
-    write /sys/devices/system/cpu/cpu0/online 1
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 1958400
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 268800
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor zzmoove
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor interactive
 
     # CPU1
-    write /sys/devices/system/cpu/cpu1/online 1
     write /sys/devices/system/cpu/cpu1/cpufreq/scaling_max_freq 1958400
     write /sys/devices/system/cpu/cpu1/cpufreq/scaling_min_freq 268800
-    write /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor zzmoove
+    write /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor interactive
 
     # CPU2
-    write /sys/devices/system/cpu/cpu2/online 1
     write /sys/devices/system/cpu/cpu2/cpufreq/scaling_max_freq 1958400
     write /sys/devices/system/cpu/cpu2/cpufreq/scaling_min_freq 268800
-    write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor zzmoove
+    write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor interactive
 
     # CPU3
-    write /sys/devices/system/cpu/cpu3/online 1
     write /sys/devices/system/cpu/cpu3/cpufreq/scaling_max_freq 1958400
     write /sys/devices/system/cpu/cpu3/cpufreq/scaling_min_freq 268800
-    write /sys/devices/system/cpu/cpu3/cpufreq/scaling_governor zzmoove
+    write /sys/devices/system/cpu/cpu3/cpufreq/scaling_governor interactive
 
-    # zzmoove profile
-    write /sys/devices/system/cpu/cpufreq/zzmoove/profile_number 5
+    # interactive profile
+    write /sys/devices/system/cpu/cpufreq/interactive/above_hispeed_delay 0
+    write /sys/devices/system/cpu/cpufreq/interactive/go_hispeed_load 100
+    write /sys/devices/system/cpu/cpufreq/interactive/hispeed_freq 0
+    write /sys/devices/system/cpu/cpufreq/interactive/io_is_busy 1
+    write /sys/devices/system/cpu/cpufreq/interactive/target_loads "90 652800:85 1190400:60 1500000:75 1700000:95 1958400:98"
+    write /sys/devices/system/cpu/cpufreq/interactive/min_sample_time 39000
+    write /sys/devices/system/cpu/cpufreq/interactive/max_freq_hysteresis 99000
+    write /sys/devices/system/cpu/cpufreq/interactive/timer_rate 30000
+    write /sys/devices/system/cpu/cpufreq/interactive/timer_slack 30000
 
-    # CPU Input Boost
-    write /sys/kernel/cpu_input_boost/ib_freqs "1190400 1497600"
-    write /sys/kernel/cpu_input_boost/ib_duration_ms 1400
-    write /sys/kernel/cpu_input_boost/enabled 1    
+    # cpu-boost
+    write /sys/module/cpu_boost/parameters/boost_ms 0
+    write /sys/module/cpu_boost/parameters/sync_threshold 0
+    write /sys/module/cpu_boost/parameters/input_boost_ms 1500
+    write /sys/module/cpu_boost/parameters/input_boost_freq 1190400
 
     # Power efficient workqueues
     chmod 644 /sys/module/workqueue/parameters/power_efficient
@@ -60,10 +54,26 @@ on stock_profile
     # Multicore power saving
     write /sys/devices/system/cpu/sched_mc_power_savings 1
 
-    # I/O
-    write /sys/block/mmcblk0/queue/iostats 0
-    write /sys/block/mmcblk0/queue/read_ahead_kb 1024
-    setprop sys.io.scheduler "zen"
+    # sched
+    write /dev/cpuctl/cpu.notify_on_migrate 0
+
+    # IO
+    write /sys/block/mmcblk0/queue/rq_affinity 0
+    write /sys/block/mmcblk0/queue/add_random 0
+    write /sys/block/mmcblk0/queue/read_ahead_kb 512
+
+    # Prevent mmc from scaling its clk down when performing writes
+    write /sys/class/mmc_host/mmc0/clk_scaling/scale_down_in_low_wr_load 1
+
+    # block wakeup sources
+    write /sys/module/wakeup/parameters/enable_qcom_rx_wakelock_ws 0
+    write /sys/module/wakeup/parameters/enable_wlan_extscan_wl_ws 0
+    write /sys/module/wakeup/parameters/enable_ipa_ws 0
+    write /sys/module/wakeup/parameters/enable_wlan_wow_wl_ws 0
+    write /sys/module/wakeup/parameters/enable_wlan_ws 0
+    write /sys/module/wakeup/parameters/enable_timerfd_ws 0
+    write /sys/module/wakeup/parameters/enable_netlink_ws 0
+    write /sys/module/wakeup/parameters/enable_netmgr_wl_ws 0
 
 on property:sys.boot_completed=1
     # according to Qcom this legacy value improves first launch latencies
