@@ -100,6 +100,7 @@ BUILD_BROKEN_DUP_RULES := true
 #PHONY
 BUILD_BROKEN_PHONY_TARGETS := true
 
+TEMPORARY_DISABLE_PATH_RESTRICTIONS := true
 
 # Encryption
 TARGET_HW_DISK_ENCRYPTION := true
@@ -166,6 +167,7 @@ TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/etc/fstab.recovery
 # SELinux
 #include device/qcom/sepolicy-legacy/sepolicy.mk
 #BOARD_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy
+SELINUX_IGNORE_NEVERALLOWS := true
 
 # Shipping API
 PRODUCT_SHIPPING_API_LEVEL := 19
