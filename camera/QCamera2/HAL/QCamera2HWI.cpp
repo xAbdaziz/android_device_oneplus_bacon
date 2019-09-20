@@ -1983,6 +1983,7 @@ QCameraHeapMemory *QCamera2HardwareInterface::allocateStreamInfoBuf(
         }
 
     case CAM_STREAM_TYPE_PREVIEW:
+		    [[fallthrough]];
         if (mParameters.getRecordingHintValue()) {
             const char* dis_param = mParameters.get(QCameraParameters::KEY_QC_DIS);
             bool disEnabled = (dis_param != NULL)
