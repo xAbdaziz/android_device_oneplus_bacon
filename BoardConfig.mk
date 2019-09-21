@@ -59,6 +59,9 @@ KERNEL_TOOLCHAIN := $(PWD)/prebuilts/gcc/linux-x86/arm/arm-linux-eabi-HyperTC-4.
 # ANT+
 BOARD_ANT_WIRELESS_DEVICE := "vfs-prerelease"
 
+#ART
+TARGET_HAS_MEMFD_BACKPORT := true
+
 # Releasetools
 TARGET_RECOVERY_UPDATER_LIBS := librecovery_updater_oppo
 TARGET_RELEASETOOLS_EXTENSIONS := $(PLATFORM_PATH)
