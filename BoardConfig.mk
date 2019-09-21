@@ -129,6 +129,7 @@ BOARD_ROOT_EXTRA_FOLDERS := \
 	persist \
 	firmware/asdp \
 	firmware/audio
+TARGET_FS_CONFIG_GEN := device/oneplus/bacon/config.fs
 BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
 BOARD_PERSISTIMAGE_FILE_SYSTEM_TYPE := ext4
 BOARD_USERDATAIMAGE_FILE_SYSTEM_TYPE := ext4
