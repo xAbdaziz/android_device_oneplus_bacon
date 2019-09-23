@@ -80,6 +80,10 @@ PRODUCT_PACKAGES += \
     android.hardware.bluetooth@1.0-service \
     libbt-vendor
 
+#Bluetooth
+PRODUCT_PROPERTY_OVERRIDES += \
+	persist.bluetooth.bluetooth_audio_hal.disabled=true
+
 # Boot animation
 TARGET_SCREEN_HEIGHT := 1920
 TARGET_SCREEN_WIDTH := 1080
