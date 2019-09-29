@@ -36,3 +36,6 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
     PRODUCT_NAME=bacon
 
 BUILD_FINGERPRINT := oneplus/bacon/A0001:5.0.2/LRX22G/YNG1TAS0YL:user/release-keys
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.build.fingerprint=$(BUILD_FINGERPRINT)
