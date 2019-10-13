@@ -168,9 +168,6 @@ TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
 # QCOM hardware
 BOARD_USES_QCOM_HARDWARE := true
 
-# Radio
-TARGET_RIL_VARIANT := caf
-
 # Recovery
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/etc/fstab.recovery
 
