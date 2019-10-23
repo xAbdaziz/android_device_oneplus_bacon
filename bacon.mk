@@ -316,6 +316,9 @@ TARGET_LD_SHIM_LIBS := \
 PRODUCT_PACKAGES += qti-telephony-common
 PRODUCT_BOOT_JARS += telephony-ext
 
+PRODUCT_PACKAGES += \
+	librecovery_updater_oppo
+
 # Call the proprietary setup
 $(call inherit-product, vendor/oneplus/bacon/bacon-vendor.mk)
 $(call inherit-product, vendor/oppo/msm8974-common/msm8974-common-vendor.mk)
