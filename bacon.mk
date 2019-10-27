@@ -324,6 +324,9 @@ PRODUCT_PACKAGES += qti-telephony-common
 PRODUCT_PACKAGES += \
 	librecovery_updater_oppo
 
+# Common Android Go configurations
+$(call inherit-product, build/target/product/go_defaults.mk)
+
 # Call the proprietary setup
 $(call inherit-product, vendor/oneplus/bacon/bacon-vendor.mk)
 
