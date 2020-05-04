@@ -101,10 +101,6 @@ on boot
     # venus
     write /sys/bus/msm_subsys/devices/subsys2/restart_level "related"
 
-    # Adaptive LMK
-    write /sys/module/lowmemorykiller/parameters/enable_adaptive_lmk 1
-    write /sys/module/lowmemorykiller/parameters/vmpressure_file_min 53059
-
     # Wifi firmware reload path
     chown wifi wifi /sys/module/wlan/parameters/fwpath
 
