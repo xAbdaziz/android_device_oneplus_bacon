@@ -33,4 +33,9 @@
     <!-- Regulatory Info -->
     <!-- Whether to show a preference item for regulatory information in About phone -->
     <bool name="config_show_regulatory_info">true</bool>
+
+  <!-- Battery Health -->
+  <string name="config_batDesCap">/sys/class/power_supply/battery/charge_full</string>
+  <string name="config_batChargeCycle">/sys/class/power_supply/battery/cycle_count</string>
+
 </resources>
