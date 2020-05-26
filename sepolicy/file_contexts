@@ -14,3 +14,7 @@
 # cgroup
 /dev/cpuset(/.*)?                  													u:object_r:cgroup:s0
 /dev/stune(/.*)?                   													u:object_r:cgroup:s0
+
+# TimeKeep
+/sys/devices/qpnp-rtc-17/rtc/rtc0(/.*)?                                            u:object_r:sysfs_rtc:s0
+/system/vendor/bin/timekeep                                                        u:object_r:timekeep_exec:s0

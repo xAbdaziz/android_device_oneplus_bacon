@@ -15,5 +15,10 @@
     "repository": "bacon-dev/prebuilts_gcc_linux-x86_arm_arm-eabi-linaro-7",
     "target_path": "prebuilts/gcc/linux-x86/arm/arm-eabi-linaro-7",
     "branch": "master"
+  },
+  {
+  	"remote": "github",
+    "repository": "LineageOS/android_hardware_sony_timekeep",
+    "target_path": "hardware/sony/timekeep",
   }
 ]
