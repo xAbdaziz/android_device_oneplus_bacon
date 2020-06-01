@@ -1,9 +1,9 @@
 [
   {
     "remote": "github",
-    "repository": "Feinzer/fz_kernel_oneplus_msm8974",
+    "repository": "bacon-dev/android_kernel_oneplus_msm8974",
     "target_path": "kernel/oneplus/msm8974",
-    "branch": "fz-ten"
+    "branch": "ten"
   },
   {
     "repository": "android_vendor_oneplus_bacon",
@@ -12,13 +12,12 @@
   },
   {
     "remote": "github",
-    "repository": "bacon-dev/prebuilts_gcc_linux-x86_arm_arm-eabi-linaro-7",
-    "target_path": "prebuilts/gcc/linux-x86/arm/arm-eabi-linaro-7",
-    "branch": "master"
+    "repository": "bacon-dev/prebuilts_clang_host_linux-x86_clang-11.0",
+    "target_path": "prebuilts/clang/host/linux-x86/clang-11.0"
   },
   {
-  	"remote": "github",
+    "remote": "github",
     "repository": "LineageOS/android_hardware_sony_timekeep",
-    "target_path": "hardware/sony/timekeep",
+    "target_path": "hardware/sony/timekeep"
   }
 ]
