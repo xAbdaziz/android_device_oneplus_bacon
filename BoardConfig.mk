@@ -74,7 +74,6 @@ TARGET_PROCESS_SDK_VERSION_OVERRIDE := \
     /system/vendor/bin/mm-qcamera-daemon=23 \
     /system/vendor/bin/cameraserver=23 \
     /system/vendor/bin/mediaserver=23 \
-APPLY_MSM8974_1440P_EGL_WORKAROUND := true
 HAS_LEGACY_CAMERA_HAL1 := true
 
 # Charger
