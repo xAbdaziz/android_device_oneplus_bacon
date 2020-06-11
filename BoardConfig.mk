@@ -157,6 +157,8 @@ TARGET_KERNEL_CONFIG := lineageos_bacon_defconfig
 TARGET_KERNEL_SOURCE := kernel/oneplus/msm8974
 TARGET_KERNEL_CLANG_COMPILE := true
 TARGET_KERNEL_CLANG_VERSION := 11.0
+TARGET_KERNEL_CROSS_COMPILE_PREFIX := arm-none-linux-gnueabihf-
+KERNEL_TOOLCHAIN := $(shell pwd)/prebuilts/gcc/linux-x86/arm/arm-none-linux-gnueabihf-linaro-9/bin
 
 # Keymaster
 TARGET_KEYMASTER_WAIT_FOR_QSEE := true
