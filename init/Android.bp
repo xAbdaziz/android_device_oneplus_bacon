@@ -26,7 +26,7 @@ oppo_msm8974_init_library_static {
         "system/core/init",
         "external/selinux/libselinux/include",
         "external/libcap/libcap/include",
-        "device/oppo/msm8974-common"
+        "device/oneplus/bacon"
     ],
     cflags: [
         "-Wall",
@@ -35,4 +35,15 @@ oppo_msm8974_init_library_static {
     static_libs: [
         "libbase",
     ],
+}
+
+cc_library_static {
+    name: "libinit_bacon",
+    recovery_available: true,
+    srcs: ["init_bacon.cpp"],
+    include_dirs: [
+        "system/core/base/include",
+        "system/core/init",
+        "device/oneplus/bacon"
+    ]
 }

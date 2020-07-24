@@ -1,6 +1,6 @@
 bootstrap_go_package {
     name: "soong-oppo-msm8974-plugins",
-    pkgPath: "device/oppo/msm8974-common",
+    pkgPath: "device/oneplus/bacon",
     deps: [
         "blueprint",
         "blueprint-pathtools",
