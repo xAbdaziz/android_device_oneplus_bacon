@@ -17,9 +17,8 @@
 
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
-    $(LOCAL_PATH)/overlay \
-    $(LOCAL_PATH)/overlay-lineage
-
+    $(LOCAL_PATH)/overlay 
+    
 # ANT+
 PRODUCT_PACKAGES += \
     AntHalService \
@@ -154,10 +153,6 @@ PRODUCT_PACKAGES += \
     android.hardware.light@2.0-service \
     lights.msm8974
 
-# LiveDisplay
-PRODUCT_PACKAGES += \
-    vendor.lineage.livedisplay@2.0-service-sysfs
-
 # Media profile
 PRODUCT_COPY_FILES += \
     frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_audio.xml \
@@ -288,21 +283,9 @@ PRODUCT_SOONG_NAMESPACES += $(LOCAL_PATH)
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/thermal-engine.conf:$(TARGET_COPY_OUT_VENDOR)/etc/thermal-engine-8974.conf
 
-# Touch features
-PRODUCT_PACKAGES += \
-    vendor.lineage.touch@1.0-service.oppo_msm8974
-
-# Trust HAL
-PRODUCT_PACKAGES += \
-    vendor.lineage.trust@1.0-service
-
 # USB
 PRODUCT_PACKAGES += \
     android.hardware.usb@1.0-service.basic
-
-# Vendor security patch level
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.lineage.build.vendor_security_patch=2016-09-01
 
 # Vibrator
 PRODUCT_PACKAGES += \
@@ -336,6 +319,3 @@ PRODUCT_BOOT_JARS += telephony-ext
 # Call the proprietary setup
 $(call inherit-product, vendor/oneplus/bacon/bacon-vendor.mk)
 $(call inherit-product, vendor/oppo/msm8974-common/msm8974-common-vendor.mk)
-
-# Inherit from oppo-common
-$(call inherit-product, device/oppo/common/common.mk)
